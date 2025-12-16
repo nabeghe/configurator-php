@@ -99,7 +99,7 @@ $allConfig = $config->getAll(addDefaults: true);
 
 A file named `_.cache` is reserved. If APCu is not available, the list of existing configuration files is stored in this file. Although the system automatically updates the list, it is recommended to delete the `_.cache` file whenever you add a new file or remove an existing one.
 
-## کلاس Configurator
+## Configurator class
 
 | Method                                          | Description                                                        |
 |-------------------------------------------------|--------------------------------------------------------------------|
@@ -141,7 +141,7 @@ A file named `_.cache` is reserved. If APCu is not available, the list of existi
 | offsetSet($offset, $value)                      | ArrayAccess: set section                                           |
 | offsetUnset($offset)                            | ArrayAccess: remove section                                        |
 
-## کلاس Proxy
+## Proxy class
 
 This class is used for each configuration section.
 
