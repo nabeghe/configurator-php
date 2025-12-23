@@ -78,7 +78,7 @@ class Proxy implements \ArrayAccess
      */
     public function __get(string $name)
     {
-        return $this->configurator->get($this->getName(), $name);
+        return $this->configurator->get($this->getName(), $this->configurator->snake($name));
     }
 
     /**
@@ -90,7 +90,7 @@ class Proxy implements \ArrayAccess
      */
     public function __set(string $name, $value): void
     {
-        $this->configurator->set($this->getName(), $name, $value);
+        $this->configurator->set($this->getName(), $this->configurator->snake($name), $value);
     }
 
     /**
@@ -127,7 +127,6 @@ class Proxy implements \ArrayAccess
     /**
      * Retrieves all keys in the current configuration section.
      *
-     * @param  bool  $addDefaults  Whether to include default keys.
      * @return array|null Array of keys or null if empty.
      */
     public function getKeys(): ?array

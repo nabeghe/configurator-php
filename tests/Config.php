@@ -9,16 +9,14 @@ use Nabeghe\Configurator\Configurator;
 class Config extends Configurator
 {
     const array DEFAULTS = [
-        'app' => [
-            'env' => 'production',
-            'log_level' => 'info',
-        ],
         'db' => [
             'type' => 'sqlite',
             'host' => 'localhost',
             'port' => 3306,
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
+            'max_connections' => 100,
+            'connection_timeout' => 30,
         ],
     ];
 }

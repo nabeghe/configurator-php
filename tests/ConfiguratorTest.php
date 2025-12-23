@@ -37,6 +37,8 @@ class ConfiguratorTest extends TestCase
         $this->assertSame('utf8mb4', $db->charset);
         $this->assertSame('utf8mb4_unicode_ci', $db->collation);
         $this->assertSame('nabeghe_configurator_', $db->prefix);
+        $this->assertSame(200, $db->maxConnections);
+        $this->assertSame(30, $db->connectionTimeout);
         $this->assertNull($db->nothing ?? null);
     }
 
@@ -50,6 +52,8 @@ class ConfiguratorTest extends TestCase
         $this->assertSame('utf8mb4', $config->dot('db.charset'));
         $this->assertSame('utf8mb4_unicode_ci',$config->dot('db.collation'));
         $this->assertSame('nabeghe_configurator_', $config->dot('db.prefix'));
+        $this->assertSame(200, $config->dot('db.max_connections'));
+        $this->assertSame(30, $config->dot('db.connection_timeout'));
         $this->assertNull($config->dot('nothing.prefix'));
     }
 
@@ -63,6 +67,8 @@ class ConfiguratorTest extends TestCase
         $this->assertSame('utf8mb4', $db['charset']);
         $this->assertSame('utf8mb4_unicode_ci', $db['collation']);
         $this->assertSame('nabeghe_configurator_', $db['prefix']);
+        $this->assertSame(200, $db['max_connections']);
+        $this->assertSame(30, $db['connectionTimeout']);
         $this->assertNull($db['nothing']);
     }
 
