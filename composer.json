@@ -24,9 +24,15 @@
         }
     },
     "require": {
-        "php": ">=8.3"
+        "php": ">=8.3",
+        "ext-apcu": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "12"
+    },
+    "config": {
+        "platform": {
+            "ext-apcu": "0"
+        }
     }
 }

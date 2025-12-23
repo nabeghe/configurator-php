@@ -81,7 +81,7 @@ abstract class Configurator implements \ArrayAccess
     public function __get(string $name)
     {
         if (!isset($this->proxies[$name])) {
-            $this->proxies[$name] = new Proxy($this, $name);
+            $this->proxies[$name] = $this->makeProxy($name);
 
             if ($this->isLoadable() && !isset($this->config[$name])) {
                 $this->config[$name] = $this->load($name) ?? [];
@@ -106,6 +106,17 @@ abstract class Configurator implements \ArrayAccess
         if ($this->isLoadable() && !isset($this->config[$name])) {
             $this->config[$name] = $this->load($name) ?? [];
         }
+    }
+
+    /**
+     * Creates and returns a Proxy instance with the given name.
+     *
+     * @param  string  $name The section name.
+     * @return Proxy
+     */
+    protected function makeProxy(string $name): Proxy
+    {
+        return new Proxy($this, $name);
     }
 
     /**
