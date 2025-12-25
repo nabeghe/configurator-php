@@ -87,6 +87,8 @@ abstract class Configurator implements \ArrayAccess
      */
     public function __get(string $name)
     {
+        $name = $this->snake($name);
+
         if (!isset($this->proxies[$name])) {
             $this->proxies[$name] = $this->makeProxy($name);
 
@@ -107,6 +109,8 @@ abstract class Configurator implements \ArrayAccess
      */
     public function __set(string $name, $value): void
     {
+        $name = $this->snake($name);
+
         $this->proxies[$name] = $value instanceof Proxy ? $value : new Proxy($this, $name);
 
         // load config from the file?

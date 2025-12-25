@@ -91,4 +91,12 @@ class ConfiguratorTest extends TestCase
         $this->config->dot('db.prefix', $mainValue);
         $this->assertTrue($db->save());
     }
+
+    public function testRateLimitConfig(): void
+    {
+        $rateLimit = $this->config->rateLimit;
+
+        $this->assertTrue($rateLimit->enabled);
+        $this->assertSame(60, $rateLimit->requestsPerMinute);
+    }
 }
